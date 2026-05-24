@@ -221,3 +221,76 @@ We are not accepting external pull requests at this time — the SDK is evolving
 ## License
 
 [MIT](LICENSE)
+
+## FAQ
+
+### What are Cloudflare Agents?
+
+Cloudflare Agents are **persistent, stateful execution environments for agentic workloads**, powered by [Durable Objects](https://developers.cloudflare.com/durable-objects/). Each agent has its own state, storage, and lifecycle with built-in support for real-time communication, scheduling, AI model calls, MCP, and workflows.
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| Stateful | Each agent maintains its own persistent state |
+| Real-time | WebSocket support for instant client sync |
+| Hibernation | Agents sleep when idle, wake on demand |
+| Scalable | Run millions of agents cost-efficiently |
+| AI Integration | Built-in AI model calls and MCP support |
+| Scheduling | Time-based and interval-based task scheduling |
+
+### How do I get started?
+
+```sh
+npm create cloudflare@latest -- --template cloudflare/agents-starter
+```
+
+Or add to existing project:
+
+```sh
+npm install agents
+```
+
+### What programming language is supported?
+
+Cloudflare Agents use **TypeScript/JavaScript** with decorators for defining callable methods. Works with React frontends via `useAgent` hook.
+
+### How do agents handle state?
+
+Use `this.setState()` to update state. State is automatically persisted in Durable Objects storage and synced to connected clients via WebSocket.
+
+### What are callable methods?
+
+Use `@callable()` decorator to define methods that can be invoked from the client:
+
+```typescript
+@callable()
+increment() {
+  this.setState({ count: this.state.count + 1 });
+  return this.state.count;
+}
+```
+
+### How do agents scale?
+
+Agents hibernate when idle and wake on demand. You can run **millions of agents** — one per user, per session, per game room — each costs nothing when inactive.
+
+### What AI features are available?
+
+| Feature | Description |
+|---------|-------------|
+| AI Model Calls | Call OpenAI, Anthropic, and other LLMs |
+| MCP Support | Model Context Protocol integration |
+| Workflows | Define multi-step agent workflows |
+| Scheduling | Schedule AI tasks with intervals or cron |
+
+### License
+
+Cloudflare Agents uses the **Apache-2.0 License**.
+
+### Help Resources
+
+- **Documentation**: [developers.cloudflare.com/agents](https://developers.cloudflare.com/agents/)
+- **Examples**: [github.com/cloudflare/agents/tree/main/examples](https://github.com/cloudflare/agents/tree/main/examples)
+- **Issues**: [github.com/cloudflare/agents/issues](https://github.com/cloudflare/agents/issues)
+
