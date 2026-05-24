@@ -221,3 +221,64 @@ We are not accepting external pull requests at this time — the SDK is evolving
 ## License
 
 [MIT](LICENSE)
+
+
+## FAQ
+
+### What is Cloudflare Agents?
+
+Cloudflare Agents is a persistent, stateful execution environment for agentic workloads powered by Cloudflare Durable Objects. Each agent has its own state, storage, and lifecycle with built-in support for real-time communication, scheduling, AI model calls, MCP, workflows, and more.
+
+| Feature | Description |
+|---------|-------------|
+| **Persistent State** | Each agent maintains its own state across invocations |
+| **Real-time Communication** | WebSocket support for live updates |
+| **AI Integration** | Built-in support for AI model calls |
+| **MCP Support** | Model Context Protocol for tool integration |
+| **Workflows** | Scheduling and task orchestration |
+| **Hibernate on Idle** | Zero cost when inactive, wakes on demand |
+| **Millions of Agents** | Run one per user, session, or game room |
+
+### How does it work?
+
+Agents run on Cloudflare's edge network using Durable Objects. They hibernate when idle (zero cost) and wake automatically when needed. Each agent is independently addressable and can be accessed via HTTP, WebSocket, or scheduled tasks.
+
+### Getting Started
+
+```sh
+npm create cloudflare@latest -- --template cloudflare/agents-starter
+```
+
+Or add to an existing project:
+
+```sh
+npm install agents
+```
+
+### Key Concepts
+
+| Concept | Description |
+|---------|-------------|
+| **Agent Class** | TypeScript class extending Agent with callable methods |
+| **State** | Persistent JSON state, survives restarts |
+| **Callable Methods** | RPC-style methods callable from client |
+| **Real-time Sync** | WebSocket state sync to frontend |
+| **Scheduling** | Schedule tasks via `schedule()` API |
+
+### Supported Use Cases
+
+- **Per-user assistants** — One agent per user with personal context
+- **Multi-player games** — Game rooms with persistent state
+- **Workflow automation** — Scheduled tasks and long-running jobs
+- **AI chatbots** — Conversational agents with memory
+- **Real-time collaboration** — Shared state across clients
+
+### License
+
+Apache 2.0 License.
+
+### Help & Resources
+
+- [Documentation](https://developers.cloudflare.com/agents/)
+- [Examples](https://github.com/cloudflare/agents/tree/main/examples)
+- [Cloudflare Discord](https://discord.cloudflare.com/)
