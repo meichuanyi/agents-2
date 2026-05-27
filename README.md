@@ -144,7 +144,7 @@ The [`examples/`](examples) directory has 30+ self-contained demos. A non-exhaus
 
 - **Showcase** — [`playground/`](examples/playground) is the kitchen-sink app: state, callable methods, scheduling, chat, tools, MCP, workflows, email, voice — all in one UI
 - **Chat & assistants** — [`assistant/`](examples/assistant), [`agents-as-tools/`](examples/agents-as-tools), [`workspace-chat/`](examples/workspace-chat), [`resumable-stream-chat/`](examples/resumable-stream-chat), [`structured-input/`](examples/structured-input), [`dynamic-tools/`](examples/dynamic-tools), [`multi-ai-chat/`](examples/multi-ai-chat)
-- **MCP** — [`mcp/`](examples/mcp), [`mcp-client/`](examples/mcp-client), [`mcp-worker/`](examples/mcp-worker), [`mcp-worker-authenticated/`](examples/mcp-worker-authenticated), [`mcp-elicitation/`](examples/mcp-elicitation), [`mcp-rpc-transport/`](examples/mcp-rpc-transport), [`webmcp/`](examples/webmcp)
+- **MCP** — [`mcp/`](examples/mcp), [`mcp-client/`](examples/mcp-client), [`mcp-server/`](examples/mcp-server), [`mcp-worker/`](examples/mcp-worker), [`mcp-worker-authenticated/`](examples/mcp-worker-authenticated), [`mcp-elicitation/`](examples/mcp-elicitation), [`mcp-rpc-transport/`](examples/mcp-rpc-transport), [`webmcp/`](examples/webmcp)
 - **Code Mode & sandboxes** — [`codemode/`](examples/codemode), [`codemode-mcp/`](examples/codemode-mcp), [`codemode-mcp-openapi/`](examples/codemode-mcp-openapi), [`dynamic-workers/`](examples/dynamic-workers), [`dynamic-workers-playground/`](examples/dynamic-workers-playground), [`worker-bundler-playground/`](examples/worker-bundler-playground)
 - **Voice** — [`voice-agent/`](examples/voice-agent), [`voice-input/`](examples/voice-input), [`elevenlabs-starter/`](examples/elevenlabs-starter)
 - **Workflows & approvals** — [`workflows/`](examples/workflows), [`a2a/`](examples/a2a)
@@ -210,6 +210,64 @@ npx changeset
 ```
 
 See [`AGENTS.md`](AGENTS.md) for deeper contributor guidance.
+
+
+## ❓ FAQ
+
+### What is Cloudflare Agents?
+
+Cloudflare Agents are persistent, stateful execution environments for agentic workloads, powered by Cloudflare Durable Objects. Each agent has its own state, storage, and lifecycle — with built-in support for real-time communication, scheduling, AI model calls, MCP, workflows, and more.
+
+### Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Persistent State** | Syncs to all connected clients, survives restarts |
+| **Callable Methods** | Type-safe RPC via the `@callable()` decorator |
+| **Sub-agents** | Parent/child DO composition via facets, nested routing, and typed parent lookup |
+| **Agent Tools** | Run chat-capable sub-agents as tools with streaming child timelines |
+| **Scheduling** | One-time, recurring, and cron-based tasks |
+| **WebSockets** | Real-time bidirectional communication |
+| **Task Queue** | Durable execution with retries and fault tolerance |
+| **SQL Storage** | Per-agent SQLite database with migrations |
+| **AI Integration** | Built-in support for Workers AI and other providers |
+| **MCP Support** | Model Context Protocol for agent-tool communication |
+
+### Getting Started
+
+```sh
+npm create cloudflare@latest -- --template cloudflare/agents-starter
+```
+
+Or add to an existing project:
+
+```sh
+npm install agents
+```
+
+### Requirements
+
+- Node.js 18+
+- Cloudflare account with Workers enabled
+- wrangler CLI
+
+### Use Cases
+
+- Per-user AI assistants
+- Game servers with persistent state
+- Collaborative tools with real-time sync
+- Background job processing
+- Scheduled automation
+
+### License
+
+Apache 2.0
+
+### Help & Resources
+
+- [Documentation](https://developers.cloudflare.com/agents/)
+- [Examples](https://github.com/cloudflare/agents/tree/main/examples)
+- [Workers AI](https://developers.cloudflare.com/workers-ai/)
 
 ## Contributing
 
